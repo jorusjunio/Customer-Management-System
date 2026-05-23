@@ -9,7 +9,7 @@ const AuthCallback = () => {
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
-        navigate('/', { replace: true });
+        navigate('/dashboard', { replace: true });
       } else if (event === 'SIGNED_OUT') {
         navigate('/login', { replace: true });
       }
@@ -17,7 +17,7 @@ const AuthCallback = () => {
 
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        navigate('/', { replace: true });
+        navigate('/dashboard', { replace: true });
       }
     });
 
